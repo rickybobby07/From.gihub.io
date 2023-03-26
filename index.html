@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Hello, World!</title>
+</head>
+<style>
+	form div {
+	margin-bottom: 1rem;
+	
+  }
+  
+  label {
+	display: block;
+	font-weight: bold;
+	margin-bottom: 0.5rem;
+  }
+  #registration-form {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  align-items: center;
+}
+
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="password"],
+
+  select,
+  textarea {
+	display: block;
+	width: 100%;
+	padding: 0.5rem;
+	border-radius: 0.25rem;
+	border: 1px solid #ccc;
+	font-size: 1rem;
+  }
+  
+  input[type="submit"] {
+	background-color: #007bff;
+	border: none;
+	color: #fff;
+	padding: 0.5rem 1rem;
+	border-radius: 0.25rem;
+	font-size: 1rem;
+	cursor: pointer;
+  }
+  
+  input[type="submit"]:hover {
+	background-color: #0069d9;
+  }
+
+  /* Style the form labels */
+#registration-form label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+/* Style the form inputs */
+#registration-form input,
+#registration-form select {
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  font-size: 16px;
+}
+
+/* Style the submit button */
+#registration-form input[type="submit"] {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* Hover effect for the submit button */
+#registration-form input[type="submit"]:hover {
+  background-color: #3e8e41;
+}
+</style>
+
+  
+<body>
+	<form id="registration-form" method="post">
+		<div>
+		  <label for="name">Name:</label>
+		  <input type="text" id="name" name="name" pattern="[A-Za-z]+" >
+		</div>
+		<div>
+		  <label for="address">Address:</label>
+		  <input type="text" id="address" name="address" >
+		</div>
+		<div>
+		  <label for="email">Email:</label>
+		  <input type="email" id="email" name="email" >
+		</div>
+		<div>
+		  <label for="password">Password:</label>
+		  <input type="password" id="password" name="password" >
+		</div>
+		<div>
+		  <label for="confirm-password">Confirm Password:</label>
+		  <input type="password" id="confirm-password" name="confirm-password" >
+		</div>
+		<div>
+		  <label for="phone">Phone:</label>
+		  <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" >
+		</div>
+		<div>
+		  <label for="language">First Language:</label>
+		  <select id="language" name="language">
+			<option value="english">English</option>
+			<option value="spanish">Spanish</option>
+			<option value="french">French</option>
+		  </select>
+		</div>
+		<div>
+		  <input type="submit" value="Submit">
+		</div>
+	  </form>
+	  
+</body>
+</html>
+<script>
+	const form = document.getElementById('registration-form');
+const nameInput = document.getElementById('name');
+const addressInput = document.getElementById('address');
+const emailInput = document.getElementById('email');
+const passwordInput = document.getElementById('password');
+const confirmPasswordInput = document.getElementById('confirm-password');
+const phoneInput = document.getElementById('phone');
+
+// Set autocomplete attributes
+nameInput.setAttribute('autocomplete', 'name');
+addressInput.setAttribute('autocomplete', 'street-address');
+emailInput.setAttribute('autocomplete', 'email');
+passwordInput.setAttribute('autocomplete', 'new-password');
+confirmPasswordInput.setAttribute('autocomplete', 'new-password');
+phoneInput.setAttribute('autocomplete', 'tel');
+
+form.addEventListener('submit', function(event) {
+  // Check if name input contains only letters
+  if (!/^[A-Za-z]+$/.test(nameInput.value)) {
+    alert('Name should contain only letters');
+    event.preventDefault();
+  }
+
+  // Check if password and confirm password match
+  if (passwordInput.value !== confirmPasswordInput.value) {
+    alert('Passwords do not match');
+    event.preventDefault();
+  }
+
+  // Check if phone input contains 10 digits
+  if (!/^[0-9]{10}$/.test(phoneInput.value)) {
+    alert('Phone number should contain 10 digits');
+    event.preventDefault();
+  }
+});
+
+</script>
